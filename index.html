@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>realtime situation</title>
+</head>
+<body>
+	<p></p>
+</body>
+<script type="text/javascript">
+	window.onload =  function() {
+		setInterval(function(){
+			var today = new Date();
+			var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+			document.getElementsByTagName("p")[0].innerHTML = time;
+		}, 1000);
+	};
+</script>
+</html>
