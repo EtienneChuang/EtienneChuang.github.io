@@ -2,16 +2,36 @@
 <html>
 <head>
 	<title>realtime situation</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.min.js"></script>
+	<style type="text/css">
+		.chart div {
+			color : white;
+			padding : 0px;
+			margin : 2px;
+			
+			text-align: left;
+			background-color: steelblue;
+			font: 10px sans-serif;
+
+		}
+	</style>
 </head>
 <body>
-	<p></p>
+	<div class="chart"></div>
 </body>
 <script type="text/javascript">
+	let limit = 10;
 	window.onload =  function() {
+		let data = [];
+		for(var i = 0; i < limit; i++) data.push(0);
 		setInterval(function(){
-			var today = new Date();
-			var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-			document.getElementsByTagName("p")[0].innerHTML = time;
+			//random
+			var randomNumber = Math.floor(Math.random() * 200);
+			if(data.length > limit) data.shift();
+			data.push(randomNumber);
+			d3.select(".chart").selectAll("div").remove(0);
+			d3.select(".chart").selectAll("div").data(data).enter().append("div").style("width",
+				function(d) { return d + "px";}).text(function(d) { return d });
 		}, 1000);
 	};
 </script>
