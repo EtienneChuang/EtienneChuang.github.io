@@ -3,6 +3,7 @@
 <head>
 	<title>realtime situation</title>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<style type="text/css">
 		.chart div {
 			color : white;
@@ -23,8 +24,22 @@
 	let limit = 10;
 	window.onload =  function() {
 		let data = [];
-		for(var i = 0; i < limit; i++) data.push(0);
+		let dataUrl = "csv/maskdata.csv";
+		d3.csv(dataUrl, function(data) {
+			console.log(data);
+		});
+		
+		//for(var i = 0; i < limit; i++) data.push(0);
+/*		
 		setInterval(function(){
+			console.log('test');
+
+
+
+
+			d3.csv(dataUrl, function(data) {
+				console.log(data);
+			});
 			//random
 			var randomNumber = Math.floor(Math.random() * 200);
 			if(data.length > limit) data.shift();
@@ -32,7 +47,10 @@
 			d3.select(".chart").selectAll("div").remove(0);
 			d3.select(".chart").selectAll("div").data(data).enter().append("div").style("width",
 				function(d) { return d + "px";}).text(function(d) { return d });
-		}, 1000);
+				*/
+//		}, 1000);
+
 	};
+
 </script>
 </html>
