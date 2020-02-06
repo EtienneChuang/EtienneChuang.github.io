@@ -48,7 +48,21 @@
 <script type="text/javascript">
 	let limit = 10;
 	window.onload =  function() {
-		$.get("http://data.nhi.gov.tw/Datasets/Download.ashx?rid=A21030000I-D50001-001&l=https://data.nhi.gov.tw/resource/mask/maskdata.csv", function (data) {
+		$.get('json/maskdata.json', function(data) {    
+			$('#myTable').DataTable({
+				"data": data,
+				"columns": [	
+					{ "data": '醫事機構名稱' },
+					{ "data": '醫事機構地址' },
+					{ "data": '醫事機構電話' },
+					{ "data": '成人口罩總剩餘數' },
+					{ "data": '兒童口罩剩餘數' },
+					{ "data": '來源資料時間' }
+				]
+			});
+		});
+		/*
+			"http://data.nhi.gov.tw/Datasets/Download.ashx?rid=A21030000I-D50001-001&l=https://data.nhi.gov.tw/resource/mask/maskdata.csv", function (data) {
 				var data = JSON.parse(csvJSON(data));
 				$('#myTable').DataTable({
 					"data": data,
@@ -63,24 +77,7 @@
 				});
 			}
 		);
+		*/
 	};
-
-	//var csv is the CSV file with headers
-	function csvJSON(csv){
-		var lines=csv.split("\n");
-		var result = [];
-		var headers=lines[0].split(",");
-
-		for(var i=1;i<lines.length;i++){
-			var obj = {};
-			var currentline=lines[i].split(",");
-			for(var j=0;j<headers.length;j++){
-				obj[headers[j]] = currentline[j];
-			}
-			result.push(obj);
-		}
-		return JSON.stringify(result); //JSON
-	}
-
 </script>
 </html>
