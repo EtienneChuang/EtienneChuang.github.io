@@ -2,8 +2,9 @@
 <html>
 <head>
 	<title>realtime situation</title>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 	<style type="text/css">
 		.chart div {
 			color : white;
@@ -15,41 +16,46 @@
 			font: 10px sans-serif;
 
 		}
+		#myTable {
+			text-align: center;
+		}
 	</style>
 </head>
 <body>
 	<div class="chart"></div>
+	<div>
+		<h5>
+			於搜尋欄輸入關鍵字可過濾出符合的資料，如電話、縣市、地區
+		</h5>
+	</div>
+	<div>
+		<table id="myTable" class="display">
+			<thead>
+				<tr>
+					<th>醫事機構名稱</th>
+					<th>醫事機構地址</th>
+					<th>醫事機構電話</th>
+					<th>成人口罩總剩餘數</th>
+					<th>兒童口罩剩餘數</th>
+					<th>來源資料時間</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+	</div>
 </body>
+	
 <script type="text/javascript">
 	let limit = 10;
 	window.onload =  function() {
-		let data = [];
-		let dataUrl = "csv/maskdata.csv";
-		d3.csv(dataUrl, function(data) {
-			console.log(data);
+		$.get("http://data.nhi.gov.tw/Datasets/Download.ashx?rid=A21030000I-D50001-001&l=https://data.nhi.gov.tw/resource/mask/maskdata.csv", function (data) {
+			var data = JSON.parse(csvJSON(data));
+			$(data).each(function (k, v) {
+				console.log(v);
+			})
 		});
-		
-		//for(var i = 0; i < limit; i++) data.push(0);
-/*		
-		setInterval(function(){
-			console.log('test');
-
-
-
-
-			d3.csv(dataUrl, function(data) {
-				console.log(data);
-			});
-			//random
-			var randomNumber = Math.floor(Math.random() * 200);
-			if(data.length > limit) data.shift();
-			data.push(randomNumber);
-			d3.select(".chart").selectAll("div").remove(0);
-			d3.select(".chart").selectAll("div").data(data).enter().append("div").style("width",
-				function(d) { return d + "px";}).text(function(d) { return d });
-				*/
-//		}, 1000);
-
+    
+	    
 	};
 
 </script>
