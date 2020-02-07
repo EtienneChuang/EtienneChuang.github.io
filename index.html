@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>realtime situation</title>
+	<title>where is the mask</title>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
@@ -60,6 +60,10 @@
 					{ "data": '來源資料時間' }
 				]
 			});
+            $("#myTable>thead>tr>th").each(function(){
+                $(this).css("position", "-webkit-sticky").css("position", "sticky").css("top", 0).css("background-color", "white")
+            });
+            //add color, sticky
 		});
 		/*
 			"http://data.nhi.gov.tw/Datasets/Download.ashx?rid=A21030000I-D50001-001&l=https://data.nhi.gov.tw/resource/mask/maskdata.csv", function (data) {
