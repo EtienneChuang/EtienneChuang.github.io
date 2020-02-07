@@ -65,6 +65,13 @@
 			$("#myTable>thead>tr>th").each(function(){
                 $(this).css("position", "-webkit-sticky").css("position", "sticky").css("top", 0).css("background-color", "white")
             });
+			addLink();
+            $("#myTable_length").on("change", function() {
+        		addLink();
+        	});
+        	$("input").on("change", function() {
+        		addLink();
+        	});
 		});
 
 		function addLink() {
@@ -79,15 +86,6 @@
             	});
 			});
 		}
-
-		$(document).ready(function() {
-			$("#myTable_length").on("change", function() {
-        		addLink();
-        	});
-        	$("input").on("change", function() {
-        		addLink();
-        	});
-		});		
 	};
 </script>
 </html>
