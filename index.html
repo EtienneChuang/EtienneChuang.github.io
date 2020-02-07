@@ -78,10 +78,15 @@
                 $(this).css("position", "-webkit-sticky").css("position", "sticky").css("top", 0).css("background-color", "white")
             });
 			addLink();
-			$("body").on('DOMContentLoaded', "#myTable_info", function() {
-				alert("test");
-				addLink();
-			});
+			$("#myTable_length").on("change", function() {
+        		addLink();
+        	});
+        	$("input").on("change", function() {
+        		addLink();
+        	});
+        	$("#myTable>thead>tr").on("click", function() {
+        		addLink();
+        	});
 		});
 
 		function addLink() {
