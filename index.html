@@ -65,24 +65,33 @@
 			$("#myTable>thead>tr>th").each(function(){
                 $(this).css("position", "-webkit-sticky").css("position", "sticky").css("top", 0).css("background-color", "white")
             });
+            $("#myTable>tbody>tr>td").each(function(){
+            	$(this).append("<a href=")
+                $(this).css("position", "-webkit-sticky").css("position", "sticky").css("top", 0).css("background-color", "white")
+            });
+            addLink();
 		});
-		/*
-			"http://data.nhi.gov.tw/Datasets/Download.ashx?rid=A21030000I-D50001-001&l=https://data.nhi.gov.tw/resource/mask/maskdata.csv", function (data) {
-				var data = JSON.parse(csvJSON(data));
-				$('#myTable').DataTable({
-					"data": data,
-					"columns": [	
-						{ "data": '醫事機構名稱' },
-						{ "data": '醫事機構地址' },
-						{ "data": '醫事機構電話' },
-						{ "data": '成人口罩總剩餘數' },
-						{ "data": '兒童口罩剩餘數' },
-						{ "data": '來源資料時間' }
-					]
-				});
-			}
-		);
-		*/
+		$(document).ready(function() {
+			$("#myTable_length").on("change", function() {
+        		addLink();
+        	});
+        	$("input").on("change", function() {
+        		addLink();
+        	});
+		});
+
+		function addLink() {
+			$("#myTable>tbody>tr").each(function(){
+				$(this).find("td").each(function(index, td){
+					if(index == 1) {
+						var address = $(td).html();
+						var link = "<a target='_blank' href='https://www.google.com/maps?q=" 
+								+ address + "'>"+address+"</a> ";
+                		$(td).html(link);
+					}
+            	});
+			});
+		}
 	};
 </script>
 </html>
