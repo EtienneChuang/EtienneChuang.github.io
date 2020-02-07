@@ -29,11 +29,17 @@
 </head>
 <body>
 	<div class="chart"></div>
-	<div align="right">
-		<h5>
-			於搜尋欄輸入關鍵字可過濾出符合的資料，如電話、縣市、地區<br>
-			點選表頭可以排序
-		</h5>
+	<div id="info" align="left">
+		<div id="updateTime">
+			<p></p>
+		</div>
+		<div id="memo">
+			<p>
+				<font color="red">
+					於搜尋欄輸入關鍵字可過濾出符合的資料，如電話、縣市、地區, 點選欄位表頭可以排序, 點選地址可查詢google地圖
+				</font>
+			</p>	
+		</div>
 	</div>
 	<div>
 		<table id="myTable" class="display">
@@ -54,6 +60,7 @@
 	
 <script type="text/javascript">
 	let limit = 10;
+	let lastUpdateTime = "";
 	window.onload =  function() {
 		$.get('json/maskdata.json', function(data) {    
 			$('#myTable').DataTable({
@@ -71,7 +78,8 @@
                 $(this).css("position", "-webkit-sticky").css("position", "sticky").css("top", 0).css("background-color", "white")
             });
 			addLink();
-			$("body").on('DOMSubtreeModified', "#myTable_info", function() {
+			$("body").on('DOMContentLoaded', "#myTable_info", function() {
+				alert("test");
 				addLink();
 			});
 		});
@@ -84,7 +92,10 @@
 						var link = "<a target='_blank' href='https://www.google.com/maps?q=" 
 								+ address + "'>"+address+"</a> ";
                 		$(td).html(link);
-					}
+					} else if(index == 5 && lastUpdateTime == "") {
+						lastUpdateTime = $(td).html();
+						$("#info>div[id=updateTime]>p").html("最近一次更新時間：" + lastUpdateTime);
+					};
             	});
 			});
 		}
