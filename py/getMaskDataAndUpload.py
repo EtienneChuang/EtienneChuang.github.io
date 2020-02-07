@@ -31,7 +31,7 @@ def getDataAndUpload():
 	json_str = json.dumps(datas, ensure_ascii=False, indent=4)
 	# 去除\",\\N,\n 无关符号
 	result_data = json_str.replace(r'\"','').replace(r'\\N','').replace(r'\n','')
-	output_file = "../json/maskdata.json"
+	output_file = "/json/maskdata.json"
 	# 写入文件
 	with open(output_file, "w+", encoding=encoding) as f:
 	    f.write(result_data)
