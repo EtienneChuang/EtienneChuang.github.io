@@ -65,11 +65,28 @@
 			$("#myTable>thead>tr>th").each(function(){
                 $(this).css("position", "-webkit-sticky").css("position", "sticky").css("top", 0).css("background-color", "white")
             });
-            $("#myTable>tbody>tr>td").each(function(){
-            	$(this).append("<a href=")
-                $(this).css("position", "-webkit-sticky").css("position", "sticky").css("top", 0).css("background-color", "white")
-            });
 		});
+		$(document).ready(function() {
+			$("#myTable_length").on("change", function() {
+        		addLink();
+        	});
+        	$("input").on("change", function() {
+        		addLink();
+        	});
+		});
+
+		function addLink() {
+			$("#myTable>tbody>tr").each(function(){
+				$(this).find("td").each(function(index, td){
+					if(index == 1) {
+						var address = $(td).html();
+						var link = "<a target='_blank' href='https://www.google.com/maps?q=" 
+								+ address + "'>"+address+"</a> ";
+                		$(td).html(link);
+					}
+            	});
+			});
+		}
 	};
 </script>
 </html>
