@@ -52,8 +52,7 @@
 	window.onload =  function() {
 		$.get('json/maskdata.json', function(data) {    
 			$('#myTable').DataTable({
-                "fixedHeader": true,
-				"data": data,
+               	"data": data,
 				"columns": [	
 					{ "data": '醫事機構名稱' },
 					{ "data": '醫事機構地址' },
@@ -63,6 +62,9 @@
 					{ "data": '來源資料時間' }
 				]
 			});
+			$("#myTable>thead>tr>th").each(function(){
+                $(this).css("position", "-webkit-sticky").css("position", "sticky").css("top", 0).css("background-color", "white")
+            });
 		});
 		/*
 			"http://data.nhi.gov.tw/Datasets/Download.ashx?rid=A21030000I-D50001-001&l=https://data.nhi.gov.tw/resource/mask/maskdata.csv", function (data) {
