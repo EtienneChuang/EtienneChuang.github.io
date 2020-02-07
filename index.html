@@ -27,7 +27,8 @@
 	<div class="chart"></div>
 	<div align="right">
 		<h5>
-			於搜尋欄輸入關鍵字可過濾出符合的資料，如電話、縣市、地區
+			於搜尋欄輸入關鍵字可過濾出符合的資料，如電話、縣市、地區<br>
+			點選表頭可以排序
 		</h5>
 	</div>
 	<div>
@@ -66,15 +67,9 @@
                 $(this).css("position", "-webkit-sticky").css("position", "sticky").css("top", 0).css("background-color", "white")
             });
 			addLink();
-            $("#myTable_length").on("change", function() {
-        		addLink();
-        	});
-        	$("input").on("change", function() {
-        		addLink();
-        	});
-        	$("#myTable>thead>tr").on("click", function() {
-        		addLink();
-        	});
+			$("body").on('DOMSubtreeModified', "#myTable_info", function() {
+				addLink();
+			});
 		});
 
 		function addLink() {
