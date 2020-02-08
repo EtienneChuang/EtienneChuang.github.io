@@ -76,38 +76,23 @@
 					{ "data": '成人口罩總剩餘數' },
 					{ "data": '兒童口罩剩餘數' },
 					{ "data": '來源資料時間' }
-				]
+				],
+				"columnDefs": [
+            		{
+                		targets:1, // Start with the last
+                		render: function ( data, type, row, meta ) {
+                    		if(type === 'display'){
+                        		data = '<a href="https://www.google.com/maps?q=' + encodeURIComponent(data) + '">'+data+'</a>';
+                    		}
+                    		return data;
+                		}
+            		}
+            	]
 			});
 			$("#myTable>thead>tr>th").each(function(){
                 $(this).css("position", "-webkit-sticky").css("position", "sticky").css("top", 0).css("background-color", "white")
             });
-			addLink();
-			$("#myTable_length").on("change", function() {
-        		addLink();
-        	});
-        	$("input").on("change", function() {
-        		addLink();
-        	});
-        	$("#myTable>thead>tr").on("click", function() {
-        		addLink();
-        	});
 		});
-
-		function addLink() {
-			$("#myTable>tbody>tr").each(function(){
-				$(this).find("td").each(function(index, td){
-					if(index == 1) {
-						var address = $(td).html();
-						var link = "<a target='_blank' href='https://www.google.com/maps?q=" 
-								+ address + "'>"+address+"</a> ";
-                		$(td).html(link);
-					} else if(index == 5 && lastUpdateTime == "") {
-						lastUpdateTime = $(td).html();
-						$("#info>div[id=updateTime]>p").html("最近一次更新時間：" + lastUpdateTime);
-					};
-            	});
-			});
-		}
 	};
 </script>
 </html>
