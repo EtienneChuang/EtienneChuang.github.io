@@ -1,1 +1,1 @@
-worker: python py/getMaskAndUpload.py
+worker: python py/getMaskDataAndUpload.py
