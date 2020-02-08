@@ -1,1 +1,1 @@
-worker: python py/restfulAPI.py
+worker: python py/getMaskAndUpload.py
