@@ -31,4 +31,4 @@ class Maskdata(Resource):
 api.add_resource(Maskdata, '/Maskdata') # Route_1
 
 if __name__ == '__main__':
-     app.run(port='5002')
+     app.run(port='8080')
