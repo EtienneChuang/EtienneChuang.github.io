@@ -42,6 +42,7 @@ def keep_gettng_data_and_upload():
 	flag = True
 	while flag:
 		try:
+			print("start processing!")
 			getDataAndUpload()
 			print("uploaded!")
 			time.sleep(60)
