@@ -36,7 +36,7 @@ def getDataAndUpload():
 	with open(output_file, "w+", encoding=encoding) as f:
 	    f.write(result_data)
 	print("convert success")
-	autoCommitFileToGit.doCommit()
+	#autoCommitFileToGit.doCommit()
 
 def keep_gettng_data_and_upload():
 	flag = True
