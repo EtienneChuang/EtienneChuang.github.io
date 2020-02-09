@@ -1,10 +1,18 @@
-from flask import Flask, request
+from flask import Flask
 from flask_restful import Resource, Api
-from json import dumps
+import json
 from flask_jsonpify import jsonify
+import urllib
+import ssl
 
 app = Flask(__name__)
 api = Api(app)
+
+def fetchCsvData(url):
+	response = urllib.request.urlopen(url)
+	#csvObj = csv.reader(response.read("utf-8"))
+	return response
+
 
 class Maskdata(Resource):
     def get(self):
