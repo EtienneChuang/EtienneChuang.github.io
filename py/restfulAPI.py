@@ -58,4 +58,4 @@ api.add_resource(Maskdata, '/Maskdata') # Route_1
 
 if __name__ == '__main__':
 	print('app run')
-	app.run(port='5000')
+	app.run(host="0.0.0.0")
