@@ -6,3 +6,5 @@ requests==2.22.0
 cryptography==2.8
 pyOpenSSL==19.1.0
 certifi==2019.11.28
+gunicorn==20.0.4
+tornado==3.2.1
