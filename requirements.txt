@@ -2,3 +2,7 @@ GitPython==3.0.5
 Flask==1.1.1
 flask_jsonpify==1.5.0
 flask-restful==0.3.8
+requests==2.22.0
+cryptography==2.8
+pyOpenSSL==19.1.0
+certifi==2019.11.28
