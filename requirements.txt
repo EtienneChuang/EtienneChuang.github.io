@@ -8,3 +8,4 @@ pyOpenSSL==19.1.0
 certifi==2019.11.28
 gunicorn==20.0.4
 tornado==3.2.1
+flask_cors==3.0.8

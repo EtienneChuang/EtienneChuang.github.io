@@ -2,11 +2,13 @@ from flask import Flask
 from flask_restful import Resource, Api
 import json
 from flask_jsonpify import jsonify
+from flask_cors import CORS
 import urllib
 import ssl
 import requests
 import csv
 app = Flask(__name__)
+CORS(app)
 api = Api(app)
 encoding = "utf-8"
 
