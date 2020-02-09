@@ -50,7 +50,8 @@
 	let limit = 10;
 	let lastUpdateTime = "";
 	window.onload =  function() {
-		$.get('json/maskdata.json', function(data) {    
+		$.get('https://shrouded-beyond-02362.herokuapp.com/Maskdata', function(data) {  
+            console.log("data got!");  
 			$('#myTable').DataTable({
                	"data": data,
 				"columns": [	
@@ -63,7 +64,7 @@
 				],
 				"columnDefs": [
             		{
-                		targets:1, // Start with the last
+                		targets:1, // 指定第幾欄
                 		render: function ( data, type, row, meta ) {
                     		if(type === 'display'){
                         		data = '<a target="_blank" href="https://www.google.com/maps?q=' + encodeURIComponent(data) + '">'+data+'</a>';
