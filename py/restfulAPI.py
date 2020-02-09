@@ -1,6 +1,5 @@
 from flask import Flask, request
 from flask_restful import Resource, Api
-from sqlalchemy import create_engine
 from json import dumps
 from flask_jsonpify import jsonify
 
@@ -31,4 +30,5 @@ class Maskdata(Resource):
 api.add_resource(Maskdata, '/Maskdata') # Route_1
 
 if __name__ == '__main__':
-     app.run(host='0.0.0.0', port='5002')
+	print('app run')
+	app.run(port='5000')
