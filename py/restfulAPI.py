@@ -17,7 +17,8 @@ def fetchCsvData(url):
 		response = requests.get(url, verify=False)
 		decoded_content = response.content.decode('utf-8-sig')
 		csvData = decoded_content.split('\r\n')
-		print(csvData)
+		csvData = csvData[:-1]
+		#print(csvData)
 		return csvData
 	except Exception as e:
 		print(e)
@@ -38,7 +39,7 @@ class Maskdata(Resource):
         		datas.append(dict(zip(keys, values)))
         		line_num = line_num + 1
         	json_str = json.dumps(datas, ensure_ascii=False, indent=4)
-        	print(type(json_str))
+        	#print(type(json_str))
         	result_data = json_str.replace(r'\"','').replace(r'\\N','').replace(r'\n','')
         	return result_data
         except Exception as e:

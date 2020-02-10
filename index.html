@@ -53,7 +53,7 @@
 		$.get('https://shrouded-beyond-02362.herokuapp.com/Maskdata', function(data) {  
             console.log("data got!");  
 			$('#myTable').DataTable({
-               	"data": data,
+               	"data": JSON.parse(data),
 				"columns": [	
 					{ "data": '醫事機構名稱' },
 					{ "data": '醫事機構地址' },
