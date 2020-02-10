@@ -41,7 +41,7 @@ class Maskdata(Resource):
         		line_num = line_num + 1
         	json_str = json.dumps(datas, ensure_ascii=False, indent=4)
         	#print(type(json_str))
-        	result_data = json_str.replace(' ', '').replace(r'\"','').replace(r'\\N','').replace(r'\n','')
+        	result_data = json_str.replace(' ', '').replace('\"','').replace('\\N','').replace('\n','')
         	#print('size')
         	#print(sys.getsizeof(result_data))
         	return result_data
