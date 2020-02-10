@@ -39,11 +39,11 @@ class Maskdata(Resource):
         		values = lines[line_num].split(",")
         		datas.append(dict(zip(keys, values)))
         		line_num = line_num + 1
-        	json_str = json.dumps(datas, ensure_ascii=False, indent=4)
+        	json_str = json.dumps(datas, ensure_ascii=False, indent=1)
         	#print(type(json_str))
-        	result_data = json_str.replace(' ', '').replace('\"','').replace('\\N','').replace('\n','')
-        	#print('size')
-        	#print(sys.getsizeof(result_data))
+        	result_data = json_str.replace(' ', '').replace(r'\"','').replace(r'\\N','').replace(r'\n','')
+        	print('size')
+        	print(sys.getsizeof(result_data))
         	return result_data
         except Exception as e:
         	return e
