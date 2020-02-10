@@ -6,6 +6,7 @@
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script>
+	<script sype="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">
 	<style type="text/css">
@@ -50,6 +51,7 @@
 	let limit = 10;
 	let lastUpdateTime = "";
 	window.onload =  function() {
+		$.blockUI();
 		$.get('https://shrouded-beyond-02362.herokuapp.com/Maskdata', function(data) {  
             console.log("data got!");  
 			$('#myTable').DataTable({
@@ -77,6 +79,7 @@
 			$("#myTable>thead>tr>th").each(function(){
                 $(this).css("position", "-webkit-sticky").css("position", "sticky").css("top", 0).css("background-color", "white")
             });
+            $.unblockUI();
 		});
 	};
 </script>
