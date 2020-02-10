@@ -1,7 +1,6 @@
-from flask import Flask
+from flask import Flask, jsonify
 from flask_restful import Resource, Api
 import json
-from flask_jsonpify import jsonify
 from flask_cors import CORS
 import urllib
 import ssl
@@ -40,11 +39,10 @@ class Maskdata(Resource):
         		datas.append(dict(zip(keys, values)))
         		line_num = line_num + 1
         	json_str = jsonify(datas)
-        	#print(json_str)
-        	#print(type(json_str))
+        	#print(type(json_str.json()))
         	#result_data = json_str.replace(' ', '').replace(r'\"','').replace(r'\\N','').replace(r'\n','')
         	#print('size')
-        	#print(sys.getsizeof(json_str))
+        	#print(sys.getsizeof(json_str.json()))
         	return json_str
         except Exception as e:
         	return e
