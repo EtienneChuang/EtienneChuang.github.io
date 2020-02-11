@@ -24,6 +24,13 @@ def fetchCsvData(url):
 	except Exception as e:
 		print(e)
 
+def full_2_half(s):
+	full_num = '０１２３４５６７８９'
+	half_num = '0123456789'
+	return s.translate(str.maketrans(full_num, half_num))
+
+def format_phone_num(number):
+	return number.replace("(", "").replace(")", "-")
 
 class Maskdata(Resource):
     def get(self):
@@ -44,6 +51,7 @@ class Maskdata(Resource):
         			updatetime = values[-1]
         			jsondata.append(updatetime)
         		values = values[1:-1] #remove first and last element
+        		values[2] = format_phone_num(values[2])
         		datas.append(values)
         		line_num = line_num + 1
         	jsondata.append(datas)
