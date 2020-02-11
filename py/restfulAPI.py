@@ -35,12 +35,19 @@ class Maskdata(Resource):
         	line_num = 1
         	total_lines = len(lines)
         	datas = []
+        	jsondata = []
+        	jsonkeys = ["updatetime", "data"]
+        	updatetime = ""
         	while line_num < total_lines:
         		values = lines[line_num].split(",")
-        		values = values[1:]
+        		if(updatetime == ""):
+        			updatetime = values[-1]
+        			jsondata.append(updatetime)
+        		values = values[1:-1] #remove first and last element
         		datas.append(values)
         		line_num = line_num + 1
-        	json_str = json.dumps(datas, ensure_ascii=False, indent=0)
+        	jsondata.append(datas)
+        	json_str = json.dumps(dict(zip(jsonkeys, jsondata)), ensure_ascii=False, indent=0)
         	#print(type(json_str))
         	result_data = json_str.replace(r'\"','').replace(r'\\N','').replace(r'\n','')
         	print('size')
