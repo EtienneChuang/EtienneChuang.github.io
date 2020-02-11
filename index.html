@@ -56,14 +56,6 @@
             console.log("data got!");  
 			$('#myTable').DataTable({
                	"data": JSON.parse(data),
-				"columns": [	
-					{ "data": '醫事機構名稱' },
-					{ "data": '醫事機構地址' },
-					{ "data": '醫事機構電話' },
-					{ "data": '成人口罩剩餘數' },
-					{ "data": '兒童口罩剩餘數' },
-					{ "data": '來源資料時間' }
-				],
 				"columnDefs": [
             		{
                 		targets:1, // 指定第幾欄
