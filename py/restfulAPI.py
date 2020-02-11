@@ -49,7 +49,7 @@ class Maskdata(Resource):
         	jsondata.append(datas)
         	json_str = json.dumps(dict(zip(jsonkeys, jsondata)), ensure_ascii=False, indent=0)
         	#print(type(json_str))
-        	result_data = json_str.replace(r'\"','').replace(r'\\N','').replace(r'\n','')
+        	result_data = json_str.replace('\\N','').replace('\n','')
         	print('size')
         	print(result_data)
         	print(sys.getsizeof(result_data))
