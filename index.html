@@ -30,6 +30,9 @@
 </head>
 <body>
 	<div class="chart"></div>
+	<div class="info">
+		<p id="time"></p>
+	</div>
 	<div>
 		<table id="myTable" class="display">
 			<thead>
@@ -39,7 +42,6 @@
 					<th>醫事機構電話</th>
 					<th>成人口罩剩餘數</th>
 					<th>兒童口罩剩餘數</th>
-					<th>來源資料時間</th>
 				</tr>
 			</thead>
 			<tbody></tbody>
@@ -53,9 +55,12 @@
 	window.onload =  function() {
 		$.blockUI();
 		$.get('https://shrouded-beyond-02362.herokuapp.com/Maskdata', function(data) {  
-            console.log("data got!");  
+            console.log("data got!");
+            var jsondata = JSON.parse(data);
+            lastUpdateTime = jsondata.updatetime;
+            $("#time").html("最近更新時間："+lastUpdateTime);
 			$('#myTable').DataTable({
-               	"data": JSON.parse(data),
+               	"data": jsondata.data,
 				"columnDefs": [
             		{
                 		targets:1, // 指定第幾欄
