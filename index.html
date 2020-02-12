@@ -53,7 +53,16 @@
 	let limit = 10;
 	let lastUpdateTime = "";
 	window.onload =  function() {
-		$.blockUI();
+		$.blockUI({ message: '<h1><a href="https://mask.pdis.nat.gov.tw" target="_blank"><img src="image/83770031_1610864292398713_2327524635484094464_o.png" width="55%" height="90%"/></a><br>讀取資料中...</h1>' ,
+			css: {
+				top: '5%',
+				left: '20%',
+				width: '60%',
+				height:'80%',
+				cursor:'wait',backgroundColor:'#FFFFFF'
+			},
+  			overlayCSS: { backgroundColor: '#FFFFFF',opacity:1.2,cursor:'wait'}
+		});
 		$.get('https://shrouded-beyond-02362.herokuapp.com/Maskdata', function(data) {  
             console.log("data got!");
             var jsondata = JSON.parse(data);
