@@ -5,7 +5,7 @@ flask-restful==0.3.8
 requests==2.22.0
 cryptography==2.8
 pyOpenSSL==19.1.0
-certifi==2019.11.28
+certifi==2022.12.7
 gunicorn==20.0.4
 tornado==3.2.1
 flask_cors==3.0.8
